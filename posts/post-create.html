@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <header class="header">
+        <button class="back-btn" onclick="history.back();">&lt;</button>
+        <h1 class="title">게시글 작성</h1>
+        <img class="profile-img" src="/assets/images/profile.png" alt="프로필" />
+    </header>
+
+    <main class="post-container">
+        <div class="post-header">
+            <h1>게시글 작성</h1>
+        </div>
+        
+        <form id="post-create-form" class="detail-container">
+            <label for="post-title">제목</label>
+            <input type="text" id="post-title" class="form-style" required>
+            
+            <label for="post-content">내용</label>
+            <textarea id="post-content" class="form-style" required></textarea>
+
+            <!-- ✅ 이미지 업로드 기능 추가 -->
+            <label for="post-image">이미지 업로드</label>
+            <input type="file" id="post-image" accept="image/*">
+            <div id="image-preview" class="post-image"></div>
+
+            <button type="submit" class="button">작성 완료</button>
+        </form>
+    </main>
+
+    <script src="/scripts/post.js"></script>
+</body>
+</html

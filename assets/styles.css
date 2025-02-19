@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+:root {
+    --primary-color: #b3a8f2;
+    --secondary-color: #6c757d;
+    --background-color: #1f2029;
+    --text-color: #0f0e0f;
+    --highlight-color: #ffeba7;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #F4F5F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--text-color);
+}
+
+main {
+    width: 500%;
+    max-width: 1200px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 200ms linear;
+}
+
+.button:hover {
+    background-color: var(--highlight-color);
+    color: var(--background-color);
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #2a2b38;
+    color: var(--text-color);
+}
+
+input::placeholder {
+    color: var(--text-color);
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+#comment-input {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment {
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-style {
+    width: 100%; /* 입력 칸을 꽉 차게 */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white; 
+    color: black;
+}
+
+#post-content {
+    height: 300px; 
+    resize: vertical; 
+}
+#post-create-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 공통 헤더 스타일 */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: #F4F5F7; 
+    color: #1f2029;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* 뒤로가기 버튼 스타일 */
+.back-btn {
+    background: none;
+    border: none;
+    color: #1f2029;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 타이틀 스타일 */
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* 프로필 이미지 스타일 */
+.profile-img {
+    width: 10px;
+    height: 20px;
+    border-radius: 10%;
+}
+/* ✅ "게시글 목록" 중앙 정렬 */
+.center-title {
+    text-align: center;
+    flex-grow: 1; /* 남는 공간을 차지하도록 설정 */
+}
+
+/* ✅ "글 작성" 버튼을 오른쪽으로 이동 */
+.right-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+/* ✅ 헤더 때문에 게시글이 가려지는 문제 해결 */
+body {
+    padding-top: 300px; /* 헤더 높이만큼 여백 추가 */
+}
+
+/* ✅ 게시글 목록을 그리드 형식으로 정렬 */
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 블록 간 간격 */
+    justify-content: center; /* 가운데 정렬 */
+    padding: 20px;
+}
+
+/* ✅ 개별 게시글 블록 스타일 */
+.post-item {
+    width: 600px; /* 개별 블록 크기 */
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    text-align: center; /* 가운데 정렬 */
+}
+
+.post-item:hover {
+    transform: translateY(-5px); /* 마우스 오버 시 약간 위로 */
+}
+
+/* ✅ 게시글 제목 스타일 */
+.post-item h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* ✅ 게시글 내용 스타일 */
+.post-item p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ✅ 게시글 날짜 스타일 */
+.post-item small {
+    font-size: 12px;
+    color: #777;
+}
+/* ✅ 게시판 헤더 스타일 (버튼과 제목을 분리) */
+.board-header {
+    position: relative; /* 버튼 위치를 조정하기 위해 relative 설정 */
+    display: flex;
+    justify-content: center; /* 게시글 목록 제목 중앙 정렬 */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* ✅ 게시글 작성 버튼을 오른쪽으로 고정 */
+#create-post-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #b3a8f2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#create-post-btn:hover {
+    background: #b3a8f2;
+}
+/* ✅ 모달 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 어두운 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none; /* 처음에는 숨김 */
+}
+
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-content {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-confirm {
+    background: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-confirm:hover {
+    background: #5541c0;
+}
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 13px;
+    background: #D9D9D9;
+    padding: 10px 17px;
+    border: none;
+    width: 130px;
+    height: 50px;
+}
+
+.comment-form-container {
+    width: 100%;
+    background-color: white;
+    border-radius: 13px;
+    padding: 12px;
+    position: relative;
+}
+
+.comment-form {
+    width: 100%;
+    height: 90px;
+    padding: 12px;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    padding: 8px 36px;
+    background: #ACA0EB;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+}
+
+.comment-form button:hover {
+    background: #7F6AEE;
+}
+
+/* ✅ 좋아요, 조회수, 댓글을 가로로 정렬 */
+.post-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px; /* 버튼 간 간격 */
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+/* ✅ 좋아요, 조회수, 댓글 박스 크기 통일 */
+.stat-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 13px;
+    background: #D9D9D9;
+    padding: 10px 16px;
+    border: none;
+    width: 130px;  /* ✅ 크기 동일하게 설정 */
+    height: 50px;  /* ✅ 크기 동일하게 설정 */
+    text-align: center;
+}
+
+/* ✅ 좋아요 버튼도 stat-box 스타일 적용 */
+#like-button {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    outline: none;
+}
+
+/* ✅ 좋아요 버튼이 눌렸을 때 효과 */
+#like-button.active {
+    background: #ACA0EB;
+    color: white;
+}

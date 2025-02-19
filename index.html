@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <!-- ✅ 공통 헤더 추가 -->
+    <header class="header">
+        <button class="back-btn" onclick="history.back();">&lt;</button>
+        <h1 class="title">아무 말 대잔치</h1>
+        <img class="profile-img" src="/assets/images/profile.jpg" alt="프로필" />
+    </header>
+
+    <main>
+        <h2>로그인</h2>
+        <form id="login-form">
+            <label for="email">이메일</label>
+            <input type="email" id="email" class="form-style" placeholder="이메일 입력" required>
+            
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" class="form-style" placeholder="비밀번호 입력" required>
+            
+            <button type="submit" class="button">로그인</button>
+        </form>
+        <p>계정이 없으신가요? <a href="/register.html">회원가입</a></p>
+    </main>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // 기본 폼 제출 방지
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!email || !password) {
+                alert("이메일과 비밀번호를 입력하세요.");
+                return;
+            }
+
+            // ✅ 로그인 정보 저장
+            const user = {
+                id: Date.now(),
+                email: email,
+                nickname: email.split("@")[0] // 이메일 아이디 부분을 닉네임으로 사용
+            };
+
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            alert("로그인 성공!");
+            window.location.href = "/posts/posts.html"; // 로그인 후 게시판으로 이동
+        });
+    </script>
+</body>
+</html>
