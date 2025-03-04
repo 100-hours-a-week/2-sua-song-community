@@ -5,16 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const profilePlus = document.getElementById('profile-plus');
     const registerForm = document.getElementById('register-form');
   
-    // 프로필 영역 클릭 시, 기존 이미지가 있다면 삭제 후 파일 선택창 열기
+    // 프로필 영역 클릭 시, 업로드된 이미지가 있으면 삭제 후 파일 선택창 열기
     profileContainer.addEventListener('click', function() {
-      // 이미지가 이미 있다면 삭제 (즉시 초기화)
       if (!profilePreview.classList.contains('hidden')) {
         profilePreview.src = "";
         profilePreview.classList.add('hidden');
         profilePlus.style.display = 'block';
         profileUpload.value = "";
       }
-      // 파일 선택창 열기
       profileUpload.click();
     });
   
