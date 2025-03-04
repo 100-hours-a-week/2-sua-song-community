@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-6">
+    <!-- 헤더: 좌측의 < 는 로그인 페이지로, 제목은 중앙 정렬 -->
+    <div class="relative mb-6">
+      <a href="login.html" class="absolute left-0 text-gray-600 text-lg">&lt;</a>
+      <h1 class="text-2xl font-bold text-center">회원가입</h1>
+    </div>
+    <form id="register-form" class="bg-white p-6 rounded-lg shadow-md" action="/register" method="POST" enctype="multipart/form-data">
+      <!-- 프로필 사진 업로드 영역 (원 모양 100px) -->
+      <div class="mb-4 flex justify-center">
+        <div id="profile-container" class="relative w-[100px] h-[100px] rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer overflow-hidden">
+          <img id="profile-preview" src="" alt="프로필 이미지" class="object-cover w-full h-full hidden">
+          <span id="profile-plus" class="text-gray-400 text-3xl">+</span>
+        </div>
+        <input type="file" id="profile-upload" name="profile" accept="image/*" class="hidden">
+      </div>
+      <!-- 이메일 입력 (영문과 @만 허용) -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">이메일*</label>
+        <input type="email" id="email" name="email" pattern="[A-Za-z@]+" title="영문과 @만 사용 가능합니다." class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="이메일을 입력하세요" required>
+        <p class="text-xs text-gray-500">* 영문과 @만 사용 가능합니다.</p>
+      </div>
+      <!-- 비밀번호 입력 -->
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-700">비밀번호*</label>
+        <input type="password" id="password" name="password" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="비밀번호를 입력하세요" required>
+      </div>
+      <!-- 비밀번호 확인 입력 -->
+      <div class="mb-4">
+        <label for="confirm-password" class="block text-sm font-medium text-gray-700">비밀번호 확인*</label>
+        <input type="password" id="confirm-password" name="confirm-password" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="비밀번호를 다시 입력하세요" required>
+      </div>
+      <!-- 닉네임 입력 -->
+      <div class="mb-4">
+        <label for="nickname" class="block text-sm font-medium text-gray-700">닉네임*</label>
+        <input type="text" id="nickname" name="nickname" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="닉네임을 입력하세요" required>
+      </div>
+      <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-2 rounded-md">회원가입</button>
+    </form>
+    <div class="mt-4 text-center">
+      <a href="login.html" class="text-purple-600">로그인하러 가기</a>
+    </div>
+  </div>
+  <script src="register.js" defer></script>
+</body>
+</html>
