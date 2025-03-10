@@ -503,7 +503,7 @@ body {
     margin-bottom: 10px;
     border: 1px solid #E5E5E5;
     border-radius: 8px;
-    resize: noe;
+    resize: none;
 }
 .modal-buttons {
     text-align: right;

@@ -5,15 +5,15 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch('/posts/header.html')
     .then(response => response.text())
     .then(data => {
-      // 헤더를 문서 상단에 삽입
+      // 헤더를 페이지 상단에 삽입
       document.body.insertAdjacentHTML('afterbegin', data);
 
-      // 로그인한 유저 정보 업데이트
+      // 로그인한 유저 정보 업데이트 (회원가입에서 저장된 프로필 사진)
       const user = getCurrentUser();
       if (user && user.profile) {
-        const profileImgEl = document.getElementById('profileImage');
-        if (profileImgEl) {
-          profileImgEl.src = user.profile;
+        const profileImage = document.getElementById('profileImage');
+        if (profileImage) {
+          profileImage.src = user.profile;
         }
       }
 

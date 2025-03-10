@@ -10,6 +10,7 @@
     z-index: 1001;
     border-radius: 4px;
   }
+  
   #dropdownContent a {
     display: block;
     padding: 12px 20px;
@@ -17,10 +18,11 @@
     color: rgb(37,37,37);
     font-size: 12px;
   }
+  
   #dropdownContent a:hover {
     background-color: #E9E9E9;
   }
-  /* .show 클래스가 있으면 드롭다운 표시 */
+  
   .show {
     display: block;
   }
