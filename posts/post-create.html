@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <title>게시글 작성</title>
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/dropdown.css">
 </head>
 <body>
-    <header class="header">
-        <button class="back-btn" onclick="history.back();">&lt;</button>
-        <h1 class="title">게시글 작성</h1>
-        <img class="profile-img" src="/assets/images/profile.png" alt="프로필" />
-    </header>
-
+     <!-- 공통 헤더는 /scripts/header.js를 통해 동적으로 삽입됩니다. -->
+  <script type="module" src="/scripts/header.js"></script>
+  
+  <main class="post-container detail-container">
+    <div class="post-header">
+      <h1 id="post-title"></h1>
+      <div class="post-meta">
+        <div class="post-author-info">
+          <span id="post-author"></span>
+        </div>
+        <div class="post-date" id="post-date"></div>
+      </div>
+    </div>
     <main class="post-container">
         <div class="post-header">
             <h1>게시글 작성</h1>
