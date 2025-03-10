@@ -1,0 +1,16 @@
+<!-- /posts/header.html -->
+<header class="header flex items-center justify-between p-4 bg-gray-100 shadow-md">
+    <button class="back-btn" onclick="history.back();">&lt;</button>
+    <h1 class="title">아무 말 대잔치</h1>
+    <div class="relative">
+      <!-- 앵커 태그 없이 단독 프로필 이미지 -->
+      <img id="profileImage" class="profile-img cursor-pointer" src="/assets/images/profile.png" alt="프로필" style="width: 40px; height: 40px; border-radius: 50%;">
+      <!-- 드롭다운 메뉴 -->
+      <div id="dropdownContent">
+        <a href="/posts/password.html">비밀번호 수정</a>
+        <a href="/posts/profile.html">회원정보 수정</a>
+        <a id="logoutBtn" href="#">로그아웃</a>
+      </div>
+    </div>
+  </header>
+  

@@ -17,40 +17,49 @@ body {
     align-items: center;
     height: 100vh;
     color: var(--text-color);
+
 }
 
-main {
-    width: 500%;
-    max-width: 1200px;
-    background: white;
+main.board-container {
+    width: 100%;           /* 화면에 맞게 조정 */
+    max-width: 700px;      /* 필요에 따라 최대 폭 지정 */
+    background: #F4F5F7;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;        /* 가운데 정렬 */
 }
+
 
 .button {
-    padding: 8px 16px;
+    width: 200px;
+    height: 60px; /* 버튼 높이 설정 */
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     background-color: var(--primary-color);
     color: white;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 16px;
     transition: all 200ms linear;
+    display: flex;               /* 플렉스 박스로 전환 */
+    justify-content: center;     /* 가로 중앙 정렬 */
+    align-items: center;         /* 세로 중앙 정렬 */
+    margin: 30px auto;           /* 중앙 정렬 */
 }
+
 
 .button:hover {
     background-color: var(--highlight-color);
     color: var(--background-color);
 }
 
+/* 이미지넣는 컨테이너디자인 */ 
 input {
     width: 95%;
     padding: 10px;
     margin: 10px 0;
     border: none;
     border-radius: 4px;
-    background-color: #2a2b38;
+    background-color: #F4F5F7;
     color: var(--text-color);
 }
 
@@ -63,9 +72,8 @@ input::placeholder {
 }
 
 #comment-input {
-    width: 100%;
+    width: 95%;
     height: 60px;
-    padding: 10px;
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -75,21 +83,91 @@ input::placeholder {
     padding: 10px;
     margin-top: 10px;
     border-bottom: 1px solid #ddd;
+
+}
+
+/* 댓글 등록 버튼 전용 오버라이드 (필요 시) */
+#comment-button.button {
+    width: 150px;    /* 예시: 폭을 줄임 */
+    height: 40px;    /* 예시: 높이 설정 */
+    margin: 20px auto;
+}
+
+/*뎃글 수정,삭제 스타일 */
+.comment-item {
+    position: relative;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-time {
+    font-size: 12px;
+    color: #777;
+    margin-left: 8px;
+}
+
+/* 댓글 수정/삭제 버튼 컨테이너: 오른쪽 정렬 */
+.comment-actions {
+    display: flex;
+    gap: 5px;
+}
+
+/* 수정 및 삭제 버튼 스타일 */
+.edit-comment,
+.delete-comment {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #b3a8f2; 
+    color: #b3a8f2;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0 4px;
+}
+
+.edit-comment:hover,
+.delete-comment:hover {
+    background-color: var(--highlight-color);
+}
+
+
+
+.form-style textarea {
+    width: 100%;
+    height: 320px;
+    padding: 16px;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
 }
 
 .form-style {
-    width: 100%; /* 입력 칸을 꽉 차게 */
+    width: 100%;     
+    max-width: 100%;   
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 12px;
     background-color: white; 
     color: black;
+    margin-top: 10px;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 #post-content {
     height: 300px; 
-    resize: vertical; 
+    resize: vertical;
+    max-width: 600pt;
 }
 #post-create-form {
     max-width: 600px;
@@ -129,12 +207,6 @@ input::placeholder {
     margin: 0;
 }
 
-/* 프로필 이미지 스타일 */
-.profile-img {
-    width: 10px;
-    height: 20px;
-    border-radius: 10%;
-}
 /* ✅ "게시글 목록" 중앙 정렬 */
 .center-title {
     text-align: center;
@@ -150,7 +222,7 @@ input::placeholder {
 
 /* ✅ 헤더 때문에 게시글이 가려지는 문제 해결 */
 body {
-    padding-top: 300px; /* 헤더 높이만큼 여백 추가 */
+    padding-top: 200px; /* 헤더 높이만큼 여백 추가 */
 }
 
 /* ✅ 게시글 목록을 그리드 형식으로 정렬 */
@@ -165,6 +237,7 @@ body {
 /* ✅ 개별 게시글 블록 스타일 */
 .post-item {
     width: 600px; /* 개별 블록 크기 */
+    max-width: 600px;
     background: white;
     padding: 15px;
     border-radius: 10px;
@@ -217,12 +290,17 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 14px;
+    width: 150px;      /* 버튼 폭을 줄임 */
+    height: 40px;      /* 버튼 높이를 줄임 */
+    font-size: 14px;   /* 글자 크기도 줄임 */
+    margin: 20px auto; /* 필요에 따라 여백 조절 */
 }
 
 #create-post-btn:hover {
     background: #b3a8f2;
+    background-color: var(--highlight-color); /* hover 시 변경될 색상 */
 }
 /* ✅ 모달 스타일 */
 .modal-overlay {
@@ -283,11 +361,6 @@ body {
     justify-content: flex-end;
     gap: 8px;
     margin-bottom: 20px;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-
 }
 
 .stat-box {
@@ -308,7 +381,7 @@ body {
 .comment-form-container {
     width: 100%;
     background-color: white;
-    border-radius: 13px;
+    border-radius: 15px;
     padding: 12px;
     position: relative;
 }
@@ -382,68 +455,75 @@ body {
     color: white;
 }
 
-/* ✅ 댓글 리스트 전체 영역 */
-.comments-list {
-    margin-top: 20px;
+
+.post-header {
+    text-align: center; /* 텍스트 중앙 정렬 */
     display: flex;
-    flex-direction: column;
-    gap: 10px; /* 댓글 간격 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
 }
 
-/* ✅ 개별 댓글 아이템 */
-.comment-item {
-    display: flex;
+
+/* 프로필 이미지 디자인 */
+
+.profile-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: filter 0.2s ease; 
+}
+
+
+/*뎃글 수정창 */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between; /* 댓글과 버튼을 양쪽 정렬 */
+    z-index: 1000;
+}
+.modal {
     background: white;
-    padding: 12px 16px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+}
+.modal-textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid var(--primary-color); /* 댓글 왼쪽 강조 */
+    resize: noe;
 }
-
-/* ✅ 댓글 텍스트 */
-.comment-text {
-    flex: 1; /* 버튼 영역과 분리 */
-    font-size: 14px;
-    color: #333;
-    word-break: break-word; /* 긴 댓글도 줄바꿈 */
+.modal-buttons {
+    text-align: right;
 }
-
-/* ✅ 댓글 버튼(수정, 삭제) 감싸는 영역 */
-.comment-actions {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* 버튼 간격 */
-}
-
-/* ✅ 댓글 수정 & 삭제 버튼 디자인 */
-.comment-actions button {
-    padding: 6px 12px;
-    font-size: 12px;
+.modal-confirm,
+.modal-cancel {
+    padding: 8px 12px;
+    margin-left: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
 }
-
-/* ✅ 수정 버튼 */
-.comment-actions .edit-comment {
-    background: var(--primary-color);
+.modal-confirm {
+    background-color: var(--primary-color);
     color: white;
 }
-
-.comment-actions .edit-comment:hover {
-    background: var(--highlight-color);
-    color: var(--background-color);
+.modal-cancel {
+    background-color: #ccc;
+    color: black;
 }
-
-/* ✅ 삭제 버튼 */
-.comment-actions .delete-comment {
-    background: #FF6B6B;
-    color: white;
-}
-
-.comment-actions .delete-comment:hover {
-    background: #E63946;
+.modal-confirm:hover {
+    background-color: var(--highlight-color);
 }

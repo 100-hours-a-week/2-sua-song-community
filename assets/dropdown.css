@@ -1,0 +1,27 @@
+/* /assets/dropdown.css */
+#dropdownContent {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); /* 프로필 이미지 하단 5px 아래 */
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    border-radius: 4px;
+  }
+  #dropdownContent a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: rgb(37,37,37);
+    font-size: 12px;
+  }
+  #dropdownContent a:hover {
+    background-color: #E9E9E9;
+  }
+  /* .show 클래스가 있으면 드롭다운 표시 */
+  .show {
+    display: block;
+  }
+  

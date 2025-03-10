@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 목록</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+  <meta charset="UTF-8">
+  <title>게시글 목록</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/dropdown.css">
+  <style>
+    .hidden { display: none !important; }
+    /* 기본 anchor 태그와 button의 밑줄 제거 */
+    a, button {
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-<!-- header 영역 예시 (posts.html) -->
-<header class="header">
-    <button class="back-btn" onclick="history.back();">&lt;</button>
-    <h1 class="title">아무 말 대잔치</h1>
-    <!-- 프로필 이미지에 링크 추가 -->
-    <a href="/posts/profile.html">
-      <img class="profile-img" src="/assets/images/profile.png" alt="프로필" />
-    </a>
-  </header>
+  <!-- 공통 헤더는 /scripts/header.js를 통해 동적으로 삽입됩니다. -->
+
+  <main class="board-container">
+    <div class="board-header">
+      <h2>게시판</h2>
+      <button id="create-post-btn" class="button">게시글 작성</button>
+    </div>
+    <div id="post-list" class="post-list">
+      <!-- 게시글 목록이 여기에 표시됩니다. -->
+    </div>
+  </main>
   
-
-    <main class="board-container">
-        <div class="board-header">
-            <h2>게시판</h2>
-            <button id="create-post-btn" class="button">게시글 작성</button>
-        </div>
-
-        <div id="post-list" class="post-list">
-            <!-- ✅ 삭제된 게시글은 목록에서 제거됨 -->
-        </div>
-    </main>
-
-    <script src="/scripts/post.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // 게시글 작성 버튼 클릭 시 페이지 이동
-            document.getElementById("create-post-btn").addEventListener("click", function () {
-                window.location.href = "post-create.html";
-            });
-        });
-    </script>
+  <!-- 공통 헤더 및 드롭다운 메뉴 로딩 -->
+  <script type="module" src="/scripts/header.js"></script>
+  <!-- 게시글 목록 기능 스크립트 -->
+  <script src="/scripts/post.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const createBtn = document.getElementById("create-post-btn");
+      createBtn.addEventListener("click", function(){
+         window.location.href = "post-create.html";
+      });
+    });
+  </script>
 </body>
 </html>
