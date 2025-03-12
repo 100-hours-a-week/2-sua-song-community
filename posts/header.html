@@ -1,16 +1,14 @@
-<!-- /posts/header.html -->
 <header class="header flex items-center justify-between p-4 bg-gray-100 shadow-md">
-    <button class="back-btn" onclick="history.back();">&lt;</button>
-    <h1 class="title">아무 말 대잔치</h1>
-    <div class="relative">
-      <!-- 프로필 이미지: 기본 이미지는 제거하고, header.js에서 업데이트 -->
-      <img id="profileImage" class="profile-img cursor-pointer" src="/assets/images/default-profile.png" alt="프로필" style="width: 40px; height: 40px; border-radius: 50%;">
-      <!-- 드롭다운 메뉴 -->
-      <div id="dropdownContent">
-        <a href="/posts/password.html">비밀번호 수정</a>
-        <a href="/posts/profile.html">회원정보 수정</a>
-        <a id="logoutBtn" href="#">로그아웃</a>
-      </div>
+  <button class="back-btn" onclick="history.back();">&lt;</button>
+  <h1 class="title">아무 말 대잔치</h1>
+  <div class="relative">
+    <!-- 프로필 이미지: 기본 이미지는 default-profile.png (디자인 그대로) -->
+    <img id="profileImage" class="profile-img cursor-pointer"  alt="프로필" style="width: 40px; height: 40px; border-radius: 50%;">
+    <!-- 드롭다운 메뉴 -->
+    <div id="dropdownContent">
+      <a href="/posts/password.html">비밀번호 수정</a>
+      <a href="/posts/profile.html">회원정보 수정</a>
+      <a id="logoutBtn" href="#">로그아웃</a>
     </div>
-  </header>
-  
+  </div>
+</header>

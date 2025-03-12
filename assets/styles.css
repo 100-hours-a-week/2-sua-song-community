@@ -465,15 +465,6 @@ body {
 }
 
 
-/* 프로필 이미지 디자인 */
-
-.profile-image {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: filter 0.2s ease; 
-}
 
 
 /*뎃글 수정창 */
@@ -527,3 +518,50 @@ body {
 .modal-confirm:hover {
     background-color: var(--highlight-color);
 }
+
+
+.profile-img-wrapper {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ccc; /* 이미지가 없을 때 기본 배경색 */
+  }
+  
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* 기존 dropdown 스타일 유지 */
+  .dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+  
+  .dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+  }
+  
+  .dropdown li {
+    padding: 8px 20px;
+  }
+  
+  .dropdown li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

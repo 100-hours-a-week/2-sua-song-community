@@ -6,51 +6,54 @@
   <title>회원가입</title>
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/register.css">
-  <style>
-    /* 필요시 추가적인 인라인 스타일 */
-  </style>
 </head>
 <body>
-  <!-- 헤더: 뒤로가기 버튼과 중앙의 제목, 오른쪽 플레이스홀더로 균형 맞춤 -->
   <header class="header">
-    <button class="back-btn" onclick="window.location.href='/index.html'">&lt;</button>
     <h1 class="title">회원가입</h1>
-    <div class="header-placeholder"></div>
   </header>
-
   <main>
-    <form id="register-form" action="/register" method="POST" enctype="multipart/form-data">
-      <!-- 프로필 사진 업로드 영역 -->
-      <div class="profile-upload" id="profile-container">
-        <img id="profile-preview" src="/assets/images/default-profile.png" alt="프로필 이미지" class="hidden">
-        <span id="profile-plus">+</span>
-      </div>
-      <input type="file" id="profile-upload" name="profile" accept="image/*" class="visually-hidden">
+    <div class="form-wrapper">
+      <form id="register-form">
+        <div id="profile-container" class="profile-upload">
+          <img id="profile-preview" src="" alt="프로필 미리보기" class="hidden">
+          <span id="profile-plus">+</span>
+          <input type="file" id="profile-upload" name="profile" accept="image/*" class="visually-hidden">
+        </div>
 
-      <!-- 이메일 입력 -->
-      <label for="email">이메일*</label>
-      <input type="email" id="email" name="email" class="form-style" placeholder="이메일 입력" required pattern="[A-Za-z@]+" title="영문과 @만 사용 가능합니다.">
-      
-      <!-- 비밀번호 입력 -->
-      <label for="password">비밀번호*</label>
-      <input type="password" id="password" name="password" class="form-style" placeholder="비밀번호 입력" required>
-      
-      <!-- 비밀번호 확인 입력 -->
-      <label for="confirm-password">비밀번호 확인*</label>
-      <input type="password" id="confirm-password" name="confirm-password" class="form-style" placeholder="비밀번호 재입력" required>
-      
-      <!-- 닉네임 입력 -->
-      <label for="nickname">닉네임*</label>
-      <input type="text" id="nickname" name="nickname" class="form-style" placeholder="닉네임 입력" required>
-      
-      <!-- 버튼 그룹: 회원가입 + 로그인하러 가기 -->
-      <div class="flex justify-center gap-4 mt-6">
-        <button type="submit" class="button w-1/2">회원가입</button>
-        <button type="button" class="button w-1/2 bg-gray-500 hover:bg-gray-600" onclick="window.location.href='/index.html'">로그인하러 가기</button>
-      </div>
-    </form>
+        <div class="form-group">
+          <label for="email">이메일*</label>
+          <input type="email" id="email" name="email" class="form-style" placeholder="이메일 입력" required
+                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                 title="유효한 이메일 주소를 입력해주세요. 예: user@example.com">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">비밀번호*</label>
+          <input type="password" id="password" name="password" class="form-style" placeholder="비밀번호 입력" required>
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">비밀번호 확인*</label>
+          <input type="password" id="confirm-password" name="confirm-password" class="form-style" placeholder="비밀번호 재입력" required>
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="nickname">닉네임*</label>
+          <input type="text" id="nickname" name="nickname" class="form-style" placeholder="닉네임 입력" required>
+          <div class="error-message"></div>
+        </div>
+
+        <!-- 버튼 그룹: 회원가입과 로그인하러가기 버튼 모두 포함 -->
+        <div class="button-group">
+          <button type="submit" class="button">회원가입</button>
+          <button type="button" class="button secondary" onclick="window.location.href='/posts/login.html'">로그인하러가기</button>
+        </div>
+      </form>
+    </div>
   </main>
-
   <script src="/scripts/register.js"></script>
 </body>
 </html>

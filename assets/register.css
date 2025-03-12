@@ -18,9 +18,9 @@
   
   /* 메인 폼 중앙 배치 */
   main {
-    max-width: 600px;
+    max-width: 100%;
     margin: 80px auto 0;
-    padding: 20px;
+    padding: 10px;
   }
   
   /* 프로필 사진 업로드 영역 */
@@ -65,17 +65,6 @@
     font-weight: 600;
   }
   
-  /* 입력 필드 스타일 */
-  .form-style {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
   /* 버튼 그룹 스타일 */
   .button-group {
     display: flex;
@@ -105,3 +94,30 @@
     background-color: #5a6268;
   }
   
+  .hidden {
+    display: none;
+  }
+
+  .register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 110px 0;
+  position: relative;
+  width: 100%;
+}
+
+
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;  /* 어둡고 세련된 배경색 */
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}

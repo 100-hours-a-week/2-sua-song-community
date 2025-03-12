@@ -203,3 +203,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 기존 게시글 데이터 로딩 등 기타 코드...
+  
+    // 수정 버튼 기능 추가
+    const editButton = document.getElementById('edit-button');
+    const postContentDiv = document.getElementById('post-content');
+  
+    editButton.addEventListener('click', function() {
+      // 현재 게시글 내용(HTML)을 보관 (취소 시 사용)
+      const originalContent = postContentDiv.innerHTML;
+  
+      // 현재 내용을 textarea로 복사
+      const textarea = document.createElement('textarea');
+      textarea.id = 'edit-textarea';
+      textarea.value = postContentDiv.textContent.trim(); // textContent를 사용하여 순수 텍스트 복사
+  
+      // 저장 및 취소 버튼 생성
+      const saveButton = document.createElement('button');
+      saveButton.textContent = '저장';
+      saveButton.className = 'button';
+      
+      const cancelButton = document.createElement('button');
+      cancelButton.textContent = '취소';
+      cancelButton.className = 'button';
+  
+      // 버튼을 담을 컨테이너 생성
+      const actionDiv = document.createElement('div');
+      actionDiv.className = 'edit-actions';
+      actionDiv.appendChild(saveButton);
+      actionDiv.appendChild(cancelButton);
+  
+      // 게시글 내용 영역을 비우고 textarea와 액션 버튼 추가
+      postContentDiv.innerHTML = '';
+      postContentDiv.appendChild(textarea);
+      postContentDiv.appendChild(actionDiv);
+  
+      // 저장 버튼 클릭 시: textarea 내용을 게시글 내용으로 업데이트
+      saveButton.addEventListener('click', function() {
+        const updatedContent = textarea.value.trim();
+        // 여기서 서버 전송 등의 추가 작업 가능
+        postContentDiv.innerHTML = updatedContent;
+      });
+  
+      // 취소 버튼 클릭 시: 원래 내용 복원
+      cancelButton.addEventListener('click', function() {
+        postContentDiv.innerHTML = originalContent;
+      });
+    });
+  });
+  

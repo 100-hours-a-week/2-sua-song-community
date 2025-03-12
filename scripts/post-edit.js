@@ -1,79 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // URL 파라미터에서 게시글 id 가져오기
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get("id");
-
-    if (!postId) {
-        alert("게시글을 찾을 수 없습니다.");
-        window.location.href = "/posts/posts.html";
-        return;
-    }
-
+    console.log("URL 파라미터 id:", postId);
+  
+    // localStorage에서 게시글 배열 불러오기 (없으면 빈 배열)
     let posts = JSON.parse(localStorage.getItem("posts")) || [];
-    const postIndex = posts.findIndex(post => post.id == postId);
-
+    console.log("불러온 posts:", posts);
+  
+    // 해당 게시글 찾기 (id가 일치하는 게시글)
+    const postIndex = posts.findIndex(p => p.id == postId);
     if (postIndex === -1) {
-        alert("게시글을 찾을 수 없습니다.");
-        window.location.href = "/posts/posts.html";
-        return;
+      alert("게시글을 찾을 수 없습니다.");
+      window.location.href = "/posts/posts.html";
+      return;
     }
-
     const post = posts[postIndex];
-
-    console.log("🔹 수정할 게시글:", post); // ✅ 디버깅용 로그
-
-    // ✅ 기존 제목과 내용 불러오기
-    document.getElementById("post-title").value = post.title;
-    document.getElementById("post-content").value = post.content;
-
-    // ✅ 기존 이미지 표시
+    console.log("찾은 게시글:", post);
+  
+    // 수정 폼 필드에 기존 게시글 데이터 채우기
+    document.getElementById("edit-title").value = post.title;
+    document.getElementById("edit-content").value = post.content;
+    
+    // 현재 이미지가 있다면 해당 영역에 이미지 태그 삽입
     if (post.image) {
-        document.getElementById("image-preview").innerHTML = `
-            <img src="${post.image}" alt="게시글 이미지" class="post-image">
-        `;
+      document.getElementById("current-image").innerHTML = `<img src="${post.image}" alt="게시글 이미지" class="post-image">`;
+    } else {
+      document.getElementById("current-image").innerHTML = `<p>이미지가 없습니다.</p>`;
     }
-
-    document.getElementById("post-edit-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        console.log("✏️ 수정 완료 버튼 클릭됨");
-
-        const newTitle = document.getElementById("post-title").value.trim();
-        const newContent = document.getElementById("post-content").value.trim();
-        const imageFile = document.getElementById("post-image").files[0];
-
-        if (newTitle === "" || newContent === "") {
-            console.warn("⚠️ 제목 또는 내용이 비어 있음");
-            alert("제목과 내용을 입력해주세요.");
-            return;
-        }
-
-        console.log("✅ 수정된 제목:", newTitle);
-        console.log("✅ 수정된 내용:", newContent);
-
-        if (imageFile) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                post.image = e.target.result;
-                updatePostData();
-            };
-            reader.readAsDataURL(imageFile);
-        } else {
-            updatePostData();
-        }
-
-        function updatePostData() {
-            post.title = newTitle;
-            post.content = newContent;
-            post.editedAt = new Date().toISOString();
-
-            localStorage.setItem("posts", JSON.stringify(posts));
-            console.log("✅ 게시글 수정 완료:", post);
-
-            // ✅ detail.html로 확실하게 이동시키기
-            setTimeout(() => {
-                console.log("🔄 detail.html 이동 중...");
-                window.location.replace(`/posts/post-detail.html?id=${postId}`);
-            }, 500);
-        }
+  
+    // 수정 폼 제출 이벤트 처리
+    const editForm = document.getElementById("editForm");
+    editForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // 입력값 가져오기
+      const updatedTitle = document.getElementById("edit-title").value.trim();
+      const updatedContent = document.getElementById("edit-content").value.trim();
+      
+      // 게시글 데이터 업데이트
+      posts[postIndex].title = updatedTitle;
+      posts[postIndex].content = updatedContent;
+      
+      // localStorage에 수정된 posts 배열 저장
+      localStorage.setItem("posts", JSON.stringify(posts));
+      
+      alert("게시글 수정 완료!");
+      // 수정 완료 후 상세보기 페이지로 이동 (id 유지)
+      window.location.href = `/posts/detail.html?id=${postId}`;
     });
-});
+  
+    // 취소 버튼 처리: 수정 취소 시 상세보기 페이지로 돌아감
+    document.getElementById("cancelEdit").addEventListener("click", function () {
+      window.location.href = `/posts/detail.html?id=${postId}`;
+    });
+  });
+  

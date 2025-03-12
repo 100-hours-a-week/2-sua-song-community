@@ -1,15 +1,18 @@
-// /scripts/header.js
 import { getCurrentUser } from './user.js';
 
 document.addEventListener("DOMContentLoaded", function() {
   fetch('/posts/header.html')
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Header 파일을 불러올 수 없습니다.");
+      }
+      return response.text();
+    })
     .then(data => {
-      // 헤더를 페이지 상단에 삽입
       document.body.insertAdjacentHTML('afterbegin', data);
 
-      // 로그인한 유저 정보 업데이트 (회원가입에서 저장된 프로필 사진)
-      const user = getCurrentUser();
+      // localStorage에서 저장된 "user" 객체를 가져옵니다.
+      const user = getCurrentUser(); // getCurrentUser()가 localStorage.getItem('user')를 반환한다고 가정
       if (user && user.profile) {
         const profileImage = document.getElementById('profileImage');
         if (profileImage) {
@@ -17,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
 
-      // 드롭다운 메뉴 기능
+      // 드롭다운 메뉴 기능 구현
       const profileImage = document.getElementById('profileImage');
       const dropdownContent = document.getElementById('dropdownContent');
       const logoutBtn = document.getElementById('logoutBtn');
@@ -37,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          localStorage.removeItem('currentUser');
-          window.location.href = '/login.html';
+          localStorage.removeItem('user'); // 'user' 키를 일관되게 사용
+          window.location.href = '/posts/login.html';
         });
       }
     })

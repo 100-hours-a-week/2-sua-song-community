@@ -7,40 +7,30 @@
     <link rel="stylesheet" href="/assets/dropdown.css">
 </head>
 <body>
-     <!-- 공통 헤더는 /scripts/header.js를 통해 동적으로 삽입됩니다. -->
-  <script type="module" src="/scripts/header.js"></script>
-  
-  <main class="post-container detail-container">
-    <div class="post-header">
-      <h1 id="post-title"></h1>
-      <div class="post-meta">
-        <div class="post-author-info">
-          <span id="post-author"></span>
-        </div>
-        <div class="post-date" id="post-date"></div>
-      </div>
-    </div>
+    <!-- 공통 헤더는 /scripts/header.js를 통해 동적으로 삽입됩니다. -->
+    <script type="module" src="/scripts/header.js"></script>
+    
     <main class="post-container">
         <div class="post-header">
             <h1>게시글 작성</h1>
         </div>
         
         <form id="post-create-form" class="detail-container">
-            <label for="post-title">제목</label>
-            <input type="text" id="post-title" class="form-style" required>
+            <label for="create-post-title">제목</label>
+            <input type="text" id="create-post-title" class="form-style" required>
             
-            <label for="post-content">내용</label>
-            <textarea id="post-content" class="form-style" required></textarea>
-
-            <!-- ✅ 이미지 업로드 기능 추가 -->
+            <label for="create-post-content">내용</label>
+            <textarea id="create-post-content" class="form-style" required></textarea>
+            
+            <!-- 이미지 업로드 기능 -->
             <label for="post-image">이미지 업로드</label>
             <input type="file" id="post-image" accept="image/*">
             <div id="image-preview" class="post-image"></div>
-
+            
             <button type="submit" class="button">작성 완료</button>
         </form>
     </main>
-
+    
     <script src="/scripts/post.js"></script>
 </body>
-</html
+</html>
