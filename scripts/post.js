@@ -147,3 +147,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // -- 댓글, 기타 기능은 기존 코드대로 처리 --
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // localStorage에서 저장된 게시글 데이터 불러와서 수정 폼에 미리 채워주기
+    const savedPost = localStorage.getItem('postData');
+    if (savedPost) {
+      const postData = JSON.parse(savedPost);
+      document.getElementById('post-title').value = postData.title;
+      document.getElementById('post-content').value = postData.content;
+    }
+    
+    // 폼 제출 이벤트 리스너 등록 (수정 완료 버튼 클릭 시)
+    const editForm = document.getElementById('post-edit-form');
+    if (editForm) {
+      editForm.addEventListener('submit', (e) => {
+        e.preventDefault();  // 기본 제출 이벤트 취소
+        
+        // 수정된 제목과 내용을 가져옴
+        const updatedTitle = document.getElementById('post-title').value;
+        const updatedContent = document.getElementById('post-content').value;
+        
+        // localStorage에 수정된 데이터를 저장
+        const updatedPost = { title: updatedTitle, content: updatedContent };
+        localStorage.setItem('postData', JSON.stringify(updatedPost));
+        
+        alert('게시글이 수정되었습니다!');
+        
+        // 수정 후 상세 페이지로 이동 (경로는 상황에 맞게 조정)
+        window.location.href = '/posts/post-detail.html';
+      });
+    }
+    
+    // 기타 기존 기능들은 그대로 유지됩니다.
+  });
+  

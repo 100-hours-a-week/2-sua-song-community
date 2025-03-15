@@ -164,11 +164,6 @@ input::placeholder {
     font-size: 16px;
 }
 
-#post-content {
-    height: 300px; 
-    resize: vertical;
-    max-width: 600pt;
-}
 #post-create-form {
     max-width: 600px;
     margin: 0 auto;
@@ -527,41 +522,3 @@ body {
     overflow: hidden;
     background-color: #ccc; /* 이미지가 없을 때 기본 배경색 */
   }
-  
-  .profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* 기존 dropdown 스타일 유지 */
-  .dropdown {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    z-index: 1000;
-  }
-  
-  .dropdown ul {
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-  }
-  
-  .dropdown li {
-    padding: 8px 20px;
-  }
-  
-  .dropdown li a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  

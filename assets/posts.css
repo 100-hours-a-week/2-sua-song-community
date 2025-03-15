@@ -1,0 +1,60 @@
+/* 전체 컨테이너가 왼쪽 정렬되도록, 필요 시 max-width 등으로 중앙정렬 해제 */
+.board-container {
+    width: 80%;         /* 예시: 전체 화면 중 80% */
+    margin: 0 auto;     /* 가운데 정렬, 필요 시 제거 */
+    text-align: left;   /* 왼쪽 정렬 */
+  }
+  
+  /* 게시글 목록에서 각 게시글을 감싸는 컨테이너 스타일 */
+  .post-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    background-color: #fff;
+    text-align: left; /* 왼쪽 정렬 */
+  }
+  
+  /* 게시글 제목 */
+  .post-title {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #222;
+  }
+  
+  /* 좋아요, 댓글, 조회수, 날짜를 한 줄에 배치 */
+  .post-meta-row {
+    display: flex;
+    justify-content: space-between;  /* 왼쪽/오른쪽 배치 */
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  /* 왼쪽의 좋아요/댓글/조회수 */
+  .left-stats {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* 오른쪽의 날짜 */
+  .right-date {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* 구분선 */
+  .post-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 8px 0;
+  }
+  
+  /* 글쓴이(작성자) 폰트를 작게 하고, 왼쪽 정렬 */
+  .post-author {
+    font-size: 12px;
+    color: #999;
+    text-align: left;
+    margin-top: 4px;
+  }
+  

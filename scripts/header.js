@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
       document.body.insertAdjacentHTML('afterbegin', data);
 
-      // localStorage에서 저장된 "user" 객체를 가져옵니다.
-      const user = getCurrentUser(); // getCurrentUser()가 localStorage.getItem('user')를 반환한다고 가정
+      // localStorage에서 저장된 user 객체를 가져옵니다.
+      const user = getCurrentUser();
       if (user && user.profile) {
         const profileImage = document.getElementById('profileImage');
         if (profileImage) {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
 
-      // 드롭다운 메뉴 기능 구현
+      // (이후 드롭다운 메뉴 등 추가 기능 구현 코드)
       const profileImage = document.getElementById('profileImage');
       const dropdownContent = document.getElementById('dropdownContent');
       const logoutBtn = document.getElementById('logoutBtn');
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          localStorage.removeItem('user'); // 'user' 키를 일관되게 사용
+          localStorage.removeItem('user'); // 일관된 키 사용
           window.location.href = '/posts/login.html';
         });
       }

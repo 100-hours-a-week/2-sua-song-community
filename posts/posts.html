@@ -3,39 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <title>게시글 목록</title>
+  <!-- 기존 CSS -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/dropdown.css">
-  <style>
-    .hidden { display: none !important; }
-    /* 기본 anchor 태그와 button의 밑줄 제거 */
-    a, button {
-      text-decoration: none;
-    }
-  </style>
+  <!-- 새로 만든(또는 수정한) posts.css 파일 연결 -->
+  <link rel="stylesheet" href="/assets/posts.css">
 </head>
 <body>
-
   <main class="board-container">
     <div class="board-header">
-      <h2>게시판</h2>
+      <h2>아무 말 대잔치</h2>
       <button id="create-post-btn" class="button">게시글 작성</button>
     </div>
-    <div id="post-list" class="post-list">
-    </div>
+    
+    <div id="post-list" class="post-list"></div>
   </main>
   
   <!-- 공통 헤더 및 드롭다운 메뉴 로딩 -->
   <script type="module" src="/scripts/header.js"></script>
+  
   <!-- 게시글 목록 기능 스크립트 -->
-  <script src="/scripts/post.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
+    document.addEventListener("DOMContentLoaded", function() {
+      // "게시글 작성" 버튼 클릭 시 작성 페이지로 이동
       const createBtn = document.getElementById("create-post-btn");
-      createBtn.addEventListener("click", function(){
-         window.location.href = "post-create.html";
+      createBtn.addEventListener("click", function() {
+        window.location.href = "post-create.html";
+      });
+      
+      // 게시글 목록 컨테이너
+      const postsContainer = document.getElementById("post-list");
+      // localStorage에서 posts 배열 불러오기
+      let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+      // 게시글이 없으면 안내문 표시
+      if (posts.length === 0) {
+        postsContainer.innerHTML = "<p>작성된 게시글이 없습니다.</p>";
+        return;
+      }
+
+      // 게시글 목록 렌더링
+      postsContainer.innerHTML = "";
+      posts.forEach(post => {
+        // 게시글을 감싸는 div
+        const postElement = document.createElement("div");
+        postElement.classList.add("post-item");
+        
+        // 작성자 이름 (없으면 '익명')
+        const authorName = post.author || '익명';
+        // 댓글 수, 좋아요 수, 조회수
+        const commentCount = post.comments ? post.comments.length : 0;
+        const likeCount = post.likes || 0;
+        const viewCount = post.views || 0;
+
+        // 수정된 날짜가 있으면 사용, 없으면 createdAt
+        // 필요에 따라 post.updatedAt 필드를 저장/사용
+        const dateInfo = post.updatedAt || post.createdAt || '';
+
+        // 게시글 구조
+        postElement.innerHTML = `
+          <h3 class="post-title">${post.title}</h3>
+          <div class="post-meta-row">
+            <div class="left-stats">
+              좋아요 ${likeCount}  댓글 ${commentCount}  조회수 ${viewCount}
+            </div>
+            <div class="right-date">
+              ${dateInfo}
+            </div>
+          </div>
+          <hr class="post-divider" />
+          <div class="post-author">글쓴이: ${authorName}</div>
+        `;
+
+        // 게시글 클릭 시 상세 페이지로 이동
+        postElement.addEventListener("click", function() {
+          window.location.href = `post-detail.html?id=${post.id}`;
+        });
+
+        // 목록에 게시글 요소 추가
+        postsContainer.appendChild(postElement);
       });
     });
   </script>
- 
 </body>
 </html>

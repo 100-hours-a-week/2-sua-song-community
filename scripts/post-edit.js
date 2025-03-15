@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("불러온 posts:", posts);
   
     // 해당 게시글 찾기 (id가 일치하는 게시글)
-    const postIndex = posts.findIndex(p => p.id == postId);
+    const postIndex = posts.findIndex(p => p.id === Number(postId));
     if (postIndex === -1) {
       alert("게시글을 찾을 수 없습니다.");
       window.location.href = "/posts/posts.html";

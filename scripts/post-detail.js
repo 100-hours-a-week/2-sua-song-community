@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const postId = urlParams.get("id");
 
     let posts = JSON.parse(localStorage.getItem("posts")) || [];
-    const postIndex = posts.findIndex(p => p.id == postId);
+    const postIndex = posts.findIndex(p => p.id === Number(postId));
     const post = posts[postIndex];
 
     if (!post) {
@@ -252,5 +252,24 @@ document.addEventListener('DOMContentLoaded', function() {
         postContentDiv.innerHTML = originalContent;
       });
     });
+  });
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // localStorage에서 저장된 게시글 데이터 불러오기
+    const savedPost = localStorage.getItem('postData');
+    if (savedPost) {
+      const postData = JSON.parse(savedPost);
+      document.getElementById('post-title').innerText = postData.title;
+      document.getElementById('post-content').innerText = postData.content;
+      // 필요한 경우 다른 요소(작성자, 날짜 등)도 업데이트 가능
+    }
+    
+    // 수정 버튼 클릭 시, 게시글 수정 페이지로 이동
+    const editButton = document.getElementById('edit-button');
+    if (editButton) {
+      editButton.addEventListener('click', () => {
+        window.location.href = '/posts/post-edit.html';
+      });
+    }
   });
   
