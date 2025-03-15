@@ -5,6 +5,7 @@
   height: auto;
   display: block;
   margin: 0 auto;  /* 가운데 정렬 원한다면 추가 */
+  margin-bottom: 20px;
 }
 
 
