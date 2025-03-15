@@ -1,0 +1,13 @@
+.remote-posts-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .remote-post-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #fff;
+  }  
